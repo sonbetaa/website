@@ -55,6 +55,62 @@
     .hero a:hover {
       background: #c73652;
     }
+
+    /* Test Landing Page Section */
+    .test-landing {
+      padding: 80px 20px;
+      background: #f4f4f9;
+      text-align: center;
+    }
+
+    .test-landing h2 {
+      font-size: 2.2rem;
+      color: #1a1a2e;
+      margin-bottom: 1rem;
+    }
+
+    .test-landing p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+
+    .test-landing .cards {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .test-landing .card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 32px 24px;
+      flex: 1 1 250px;
+      max-width: 280px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s;
+    }
+
+    .test-landing .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .test-landing .card h3 {
+      font-size: 1.3rem;
+      color: #1a1a2e;
+      margin-bottom: 0.5rem;
+    }
+
+    .test-landing .card p {
+      font-size: 0.95rem;
+      color: #777;
+      margin-bottom: 0;
+    }
   </style>
 </head>
 <body>
@@ -63,6 +119,25 @@
     <h1>Welcome</h1>
     <p>A clean, simple website with one focused section to get you started.</p>
     <a href="#">Get Started</a>
+  </section>
+
+  <section class="test-landing">
+    <h2>What We Offer</h2>
+    <p>Explore our core features designed to help you build faster and ship with confidence.</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Fast Setup</h3>
+        <p>Get up and running in minutes with a streamlined onboarding process.</p>
+      </div>
+      <div class="card">
+        <h3>Reliable Performance</h3>
+        <p>Built for speed and stability so you can focus on what matters.</p>
+      </div>
+      <div class="card">
+        <h3>Easy Integration</h3>
+        <p>Connect with your existing tools and workflows seamlessly.</p>
+      </div>
+    </div>
   </section>
 
 </body>
