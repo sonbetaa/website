@@ -1,144 +1,2342 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Website</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iNEXT LEADER 2026 — Leading The Future Of Technology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Brand colors from iNext Leader KV */
+  --bg-deep: #04070f;
+  --bg-base: #070d1c;
+  --bg-surface: rgba(10, 22, 44, 0.65);
+  --bg-card: rgba(12, 26, 50, 0.55);
+  --bg-overlay: rgba(0, 0, 0, 0.42);
 
-    body {
-      font-family: sans-serif;
-    }
+  --accent: #0071e3;          /* Primary blue */
+  --accent-bright: #2fa6ff;   /* Hover/highlight */
+  --cyan: #00d4ff;            /* HUD cyan */
+  --cyan-soft: #4dd0e1;
+  --gold: #ffd166;            /* Accent for sponsors */
 
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      background: linear-gradient(135deg, #1a1a2e, #16213e);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-      padding: 0 20px;
-    }
+  --text-1: #ffffff;
+  --text-2: #b8d4f5;
+  --text-3: #6c8cb0;
+  --text-4: #e0fbfc;
 
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      letter-spacing: 2px;
-    }
+  --border-glow: rgba(0, 212, 255, 0.3);
+  --border-soft: rgba(45, 110, 200, 0.25);
 
-    .hero p {
-      font-size: 1.2rem;
-      color: #aaa;
-      max-width: 500px;
-      line-height: 1.6;
-      margin-bottom: 2rem;
-    }
+  /* Glow shadow system (adapted from MA, blue/cyan instead of red/orange) */
+  --glow-cyan-sm: 0 0 16px rgba(0, 212, 255, 0.5), 0 0 32px rgba(0, 113, 227, 0.35);
+  --glow-cyan-md: 0 0 22px rgba(0, 212, 255, 0.65), 0 0 44px rgba(0, 113, 227, 0.45);
+  --glow-cyan-lg: 0 0 28px rgba(0, 212, 255, 0.8), 0 0 56px rgba(0, 113, 227, 0.6), 0 0 12px rgba(255, 255, 255, 0.12) inset;
+  --glow-blue-deep: 0 0 18px rgba(0, 113, 227, 0.5), 0 0 36px rgba(0, 113, 227, 0.3) inset;
+  --glow-card: 0 0 18px rgba(0, 113, 227, 0.18) inset, 0 0 16px rgba(0, 212, 255, 0.16);
+  --glow-card-hover: 0 0 26px rgba(0, 212, 255, 0.32), 0 0 44px rgba(0, 113, 227, 0.22), 0 18px 38px rgba(0, 0, 0, 0.6);
 
-    .hero a {
-      background: #e94560;
-      color: #fff;
-      padding: 0.8rem 2rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: background 0.2s;
-    }
+  /* Typography */
+  --font-display: 'Chakra Petch', system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'Chakra Petch', monospace;
 
-    .hero a:hover {
-      background: #c73652;
-    }
+  /* Geometry */
+  --r-sharp: 2px;
+  --r-pill: 50px;
+  --container: 1240px;
+}
 
-    /* Test Landing Page Section */
-    .test-landing {
-      padding: 80px 20px;
-      background: #f4f4f9;
-      text-align: center;
-    }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-    .test-landing h2 {
-      font-size: 2.2rem;
-      color: #1a1a2e;
-      margin-bottom: 1rem;
-    }
+html { scroll-behavior: smooth; }
 
-    .test-landing p {
-      font-size: 1.1rem;
-      color: #555;
-      max-width: 600px;
-      margin: 0 auto 2rem;
-      line-height: 1.7;
-    }
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-1);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  line-height: 1.6;
+}
 
-    .test-landing .cards {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      max-width: 900px;
-      margin: 0 auto;
-    }
+/* ========== TECH BACKGROUND LAYERS ========== */
+#particle-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(0, 113, 227, 0.22) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(0, 212, 255, 0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at center, #08142a 0%, #050b1a 100%);
+  pointer-events: none;
+}
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.05) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 0%, transparent 75%);
+  pointer-events: none;
+}
+.glow-blob {
+  position: fixed;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.5;
+  z-index: -1;
+  pointer-events: none;
+  animation: drift 25s ease-in-out infinite;
+}
+.glow-blob.b1 { background: radial-gradient(circle, #0071e3 0%, transparent 70%); top: 5%; left: 5%; }
+.glow-blob.b2 { background: radial-gradient(circle, #00d4ff 0%, transparent 70%); bottom: 10%; right: 5%; animation-delay: -12s; }
+.glow-blob.b3 { background: radial-gradient(circle, #4dbaff 0%, transparent 70%); top: 50%; left: 50%; opacity: 0.28; animation-delay: -6s; width: 800px; height: 800px; }
+@keyframes drift {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(80px, -50px) scale(1.15); }
+}
+.beam {
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+  background: linear-gradient(180deg, transparent, var(--cyan), transparent);
+  width: 1px;
+  height: 100vh;
+  opacity: 0;
+  animation: beam-fall 6s ease-in-out infinite;
+}
+.beam.b1 { left: 15%; animation-delay: 0s; }
+.beam.b2 { left: 78%; animation-delay: 3s; }
+.beam.b3 { left: 45%; animation-delay: 1.5s; }
+@keyframes beam-fall {
+  0%, 100% { opacity: 0; transform: scaleY(0.5); }
+  50% { opacity: 0.55; transform: scaleY(1); box-shadow: 0 0 20px var(--cyan); }
+}
+.scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 212, 255, 0.018) 3px,
+    rgba(0, 212, 255, 0.018) 4px
+  );
+  mix-blend-mode: overlay;
+}
+@media (max-width: 768px) {
+  body {
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(0, 113, 227, 0.22) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(0, 212, 255, 0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at center, #08142a 0%, #050b1a 100%);
+    background-attachment: fixed;
+  }
+  #particle-canvas { display: none; }
+  .bg-grid { display: none; }
+  .glow-blob { filter: blur(60px); opacity: 0.25; animation: none; width: 320px; height: 320px; }
+  .glow-blob.b3 { display: none; }
+  .beam { display: none; }
+  .scanlines { display: none; }
+  /* Bỏ effect tốn GPU trên mobile */
+  .header { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(4, 7, 15, 0.95); }
+  .hero-bg-cover { display: none; }
+  .cta-card::before { animation: none; opacity: 0.4; }
+  .concept-card, .bg-overlay { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .marquee-track { animation-duration: 90s; }
+  .pulse-dot, .brand .dot { animation: none; }
+  /* Tắt reveal animation cho mobile - hiển thị trực tiếp */
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
 
-    .test-landing .card {
-      background: #fff;
-      border-radius: 8px;
-      padding: 32px 24px;
-      flex: 1 1 250px;
-      max-width: 280px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-      transition: transform 0.2s;
-    }
+/* ========== TYPOGRAPHY ========== */
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; letter-spacing: 0.5px; }
+.font-display { font-family: var(--font-display); }
+.font-body { font-family: var(--font-body); }
 
-    .test-landing .card:hover {
-      transform: translateY(-4px);
-    }
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.eyebrow::before { content: '■'; color: var(--cyan); font-size: 10px; }
 
-    .test-landing .card h3 {
-      font-size: 1.3rem;
-      color: #1a1a2e;
-      margin-bottom: 0.5rem;
-    }
+/* ========== LAYOUT ========== */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
 
-    .test-landing .card p {
-      font-size: 0.95rem;
-      color: #777;
-      margin-bottom: 0;
-    }
-  </style>
+section {
+  padding: 100px 0;
+  position: relative;
+}
+
+/* ========== HEADER ========== */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(4, 7, 15, 0.7);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-soft);
+  padding: 16px 0;
+}
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: var(--text-1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand .dot {
+  width: 8px; height: 8px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--cyan);
+}
+.nav {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+.nav a {
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--text-2);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav a:hover { color: var(--cyan); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border-radius: var(--r-pill);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary {
+  background: linear-gradient(135deg, #0071e3 0%, #00d4ff 100%);
+  color: #fff;
+  box-shadow: var(--glow-cyan-md);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glow-cyan-lg);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text-1);
+  border: 1px solid var(--cyan);
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.25) inset;
+}
+.btn-ghost:hover {
+  background: rgba(0, 212, 255, 0.1);
+  box-shadow: 0 0 24px rgba(0, 212, 255, 0.4) inset;
+}
+
+/* ========== HERO ========== */
+.hero-bg-cover {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url('assets/cover-web.jpg');
+  background-size: cover;
+  background-position: center right;
+  opacity: 0.5;
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 35%, rgba(0,0,0,1) 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 35%, rgba(0,0,0,1) 100%);
+}
+.hero-bg-cover::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(4,7,15,0.6) 0%, rgba(4,7,15,0.45) 50%, rgba(4,7,15,0.85) 100%);
+}
+.hero { isolation: isolate; }
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 100px;
+  position: relative;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+.hero-eyebrow { margin-bottom: 24px; }
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 7vw, 88px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #ffffff 0%, #b8d4f5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 40px rgba(0, 212, 255, 0.25);
+}
+.hero h1 .accent {
+  display: block;
+  background: linear-gradient(135deg, #00d4ff 0%, #0071e3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
+}
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--text-2);
+  max-width: 580px;
+  margin-bottom: 32px;
+  line-height: 1.75;
+}
+.hero-typing { min-height: 130px; }
+.hero-typing .cursor {
+  display: inline-block;
+  width: 3px;
+  background: var(--cyan);
+  color: transparent;
+  margin-left: 2px;
+  animation: blink 0.8s step-end infinite;
+  box-shadow: 0 0 6px var(--cyan);
+}
+@keyframes blink { 50% { opacity: 0; } }
+.hero-typing .line {
+  display: block;
+  position: relative;
+  padding-left: 16px;
+}
+.hero-typing .line::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--cyan);
+  font-weight: 700;
+}
+.hero-tagline {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--cyan);
+  padding: 10px 24px;
+  border: 1px solid var(--cyan);
+  border-radius: var(--r-pill);
+  margin-bottom: 36px;
+  text-transform: uppercase;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.2) inset, 0 0 30px rgba(0, 212, 255, 0.15);
+}
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-soft);
+  align-items: start;
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-1);
+  letter-spacing: 1px;
+  display: flex;
+  align-items: flex-end;
+  min-height: 38px;
+  line-height: 1;
+}
+.stat-num span { color: var(--cyan); }
+.stat-num.stat-money { font-size: clamp(17px, 1.8vw, 24px); letter-spacing: 0.3px; line-height: 1; white-space: nowrap; }
+.stat-num.stat-money span { font-size: 0.55em; margin-left: 4px; vertical-align: middle; }
+.stat-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: var(--text-3);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* Hero visual - HUD card */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 1 / 1;
+}
+.hud-frame {
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--cyan);
+  border-radius: var(--r-sharp);
+  box-shadow: var(--glow-cyan-md);
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.08) 0%, rgba(0, 212, 255, 0.04) 100%);
+  overflow: hidden;
+}
+.hud-frame::before, .hud-frame::after {
+  content: '';
+  position: absolute;
+  width: 30px; height: 30px;
+  border: 2px solid var(--cyan);
+}
+.hud-frame::before {
+  top: -2px; left: -2px;
+  border-right: none; border-bottom: none;
+}
+.hud-frame::after {
+  bottom: -2px; right: -2px;
+  border-left: none; border-top: none;
+}
+.hud-content {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  position: relative;
+}
+.hud-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  font-weight: 700;
+}
+.hud-big {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(180deg, #fff 0%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 16px 0;
+}
+.hud-big.hud-big-money { font-size: clamp(28px, 3.4vw, 44px); letter-spacing: 0.5px; }
+.hud-big.hud-big-money .hud-cur { font-size: 0.5em; letter-spacing: 2px; }
+.hud-line {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--text-2);
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--border-soft);
+}
+.hud-line span:last-child { color: var(--cyan); }
+
+/* Pulse animation */
+.pulse-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  background: var(--cyan);
+  border-radius: 50%;
+  margin-right: 6px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7); }
+  50% { opacity: 0.6; box-shadow: 0 0 0 12px rgba(0, 212, 255, 0); }
+}
+
+/* ========== SPONSORS BAR ========== */
+/* SPONSORS MARQUEE */
+.sponsors-marquee-section {
+  padding: 32px 0;
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+  background: rgba(4, 7, 15, 0.5);
+  overflow: hidden;
+}
+.sponsors-marquee-label {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-shadow: 0 0 12px rgba(28, 227, 255, 0.4);
+}
+@media (max-width: 640px) {
+  .sponsors-marquee-label { font-size: 14px; letter-spacing: 2px; }
+}
+.marquee-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 60s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-strip {
+  height: 110px;
+  display: block;
+  flex-shrink: 0;
+  filter: brightness(1.08);
+}
+.marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  padding-right: 56px;
+  flex-shrink: 0;
+}
+.marquee-logo {
+  height: 90px;
+  width: auto;
+  flex-shrink: 0;
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 14px 24px;
+  border-radius: 12px;
+  box-sizing: content-box;
+  box-shadow: 0 0 18px rgba(0, 212, 255, 0.18), 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+.marquee-logo:hover {
+  background: #fff;
+  box-shadow: 0 0 28px rgba(0, 212, 255, 0.45), 0 0 12px rgba(255, 255, 255, 0.2);
+  transform: scale(1.06);
+}
+@media (max-width: 640px) {
+  .marquee-logo { height: 60px; padding: 10px 16px; }
+}
+@media (max-width: 640px) {
+  .marquee-group { gap: 24px; padding-right: 24px; }
+}
+
+.sponsors-bar {
+  padding: 48px 0;
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+  background: rgba(4, 7, 15, 0.5);
+}
+.sponsors-label {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--text-3);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.sponsors-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 56px;
+  flex-wrap: wrap;
+}
+.sponsor-item {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-2);
+  letter-spacing: 1px;
+  padding: 12px 20px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-sharp);
+  transition: all 0.25s;
+  background: rgba(0, 113, 227, 0.05);
+}
+.sponsor-item:hover {
+  color: var(--cyan);
+  border-color: var(--cyan);
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.3);
+}
+.sponsor-item.diamond {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(0, 212, 255, 0.08);
+  position: relative;
+}
+.sponsor-item.diamond::before {
+  content: 'NTT KIM CƯƠNG';
+  position: absolute;
+  top: -10px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  background: var(--bg-deep);
+  padding: 0 8px;
+  color: var(--cyan);
+}
+
+/* ========== SECTION HEADERS ========== */
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.section-header .eyebrow { margin-bottom: 16px; }
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  background: linear-gradient(180deg, #fff 0%, #b8d4f5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.section-header p {
+  font-size: 16px;
+  color: var(--text-2);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.divider-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px 0 48px;
+}
+.divider-bar .line {
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+}
+.divider-bar .arrow {
+  color: var(--cyan);
+  font-size: 16px;
+  filter: drop-shadow(0 0 6px var(--cyan));
+}
+
+/* ========== ABOUT/CONCEPT ========== */
+.concept {
+  position: relative;
+}
+.concept-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-sharp);
+  padding: 56px;
+  position: relative;
+  box-shadow: var(--glow-card);
+  backdrop-filter: blur(8px);
+}
+.concept-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 50%; height: 1px;
+  background: linear-gradient(90deg, var(--cyan), transparent);
+}
+.concept-quote {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--cyan);
+  line-height: 1.4;
+  margin-bottom: 24px;
+  padding-left: 24px;
+  border-left: 3px solid var(--cyan);
+}
+.concept-body {
+  font-size: 17px;
+  color: var(--text-2);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+/* ========== TRACKS (3 khối ngành) ========== */
+.tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.track-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-sharp);
+  padding: 40px 32px;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: var(--glow-card);
+}
+.track-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--cyan));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.track-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--cyan);
+  box-shadow: var(--glow-card-hover);
+}
+.track-card:hover::before { transform: scaleX(1); }
+.track-icon {
+  width: 56px; height: 56px;
+  border: 1px solid var(--cyan);
+  border-radius: var(--r-sharp);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: var(--cyan);
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.25) inset;
+}
+.track-icon svg { width: 28px; height: 28px; }
+.track-num {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  margin-bottom: 8px;
+}
+.track-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-1);
+  margin-bottom: 16px;
+}
+.track-desc {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.track-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.role-tag {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  background: rgba(0, 113, 227, 0.12);
+  border: 1px solid var(--border-soft);
+  color: var(--text-2);
+  border-radius: var(--r-pill);
+}
+
+/* ========== TIMELINE ========== */
+.timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.timeline-line {
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  top: 32px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan) 10%, var(--accent) 50%, var(--cyan) 90%, transparent);
+  box-shadow: 0 0 12px var(--cyan);
+}
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 0;
+}
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-marker {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+.timeline-content {
+  order: 2;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-sharp);
+  padding: 22px;
+  box-shadow: var(--glow-card);
+  transition: all 0.3s;
+  text-align: left;
+  flex: 1;
+}
+.timeline-content:hover {
+  border-color: var(--cyan);
+  box-shadow: var(--glow-card-hover);
+  transform: translateY(-4px);
+}
+.timeline-stage {
+  width: 64px; height: 64px;
+  background: var(--bg-deep);
+  border: 2px solid var(--cyan);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--cyan);
+  box-shadow: var(--glow-cyan-md);
+  z-index: 2;
+}
+.timeline-date {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--cyan);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.timeline-makecolor {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-3);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.timeline-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  color: var(--text-1);
+  line-height: 1.2;
+}
+.timeline-title em {
+  display: block;
+  font-style: normal;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: var(--cyan);
+  font-weight: 600;
+  margin-top: 6px;
+}
+.timeline-desc {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+.timeline-desc ul {
+  list-style: none;
+  margin-top: 8px;
+  padding-left: 0;
+}
+.timeline-desc li {
+  padding: 4px 0 4px 16px;
+  position: relative;
+}
+.timeline-desc li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  color: var(--cyan);
+}
+
+/* ========== BENEFITS ========== */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.benefit-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-sharp);
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.3s;
+  box-shadow: var(--glow-card);
+}
+.benefit-card:hover {
+  border-color: var(--cyan);
+  transform: translateY(-4px);
+  box-shadow: var(--glow-card-hover);
+}
+.benefit-num {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--cyan), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.benefit-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-1);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.benefit-desc {
+  font-size: 13px;
+  color: var(--text-3);
+  line-height: 1.5;
+}
+
+/* ========== PARTNERS FORMAL (TIERED) ========== */
+.partners-formal {
+  padding: 100px 0;
+  background: linear-gradient(180deg, #f4f9ff 0%, #e8f1fc 100%);
+  border-top: 1px solid var(--border-soft);
+  position: relative;
+  z-index: 1;
+}
+.partner-tier { margin-bottom: 72px; text-align: center; }
+.partner-tier:last-child { margin-bottom: 0; }
+.tier-heading {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: clamp(16px, 1.9vw, 24px);
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #c8102e;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  padding: 14px 36px;
+  background: linear-gradient(135deg, #ffffff 0%, #fdf2f4 100%);
+  border-radius: 14px;
+  border: 1.5px solid rgba(200, 16, 46, 0.18);
+  box-shadow: 0 10px 28px rgba(200, 16, 46, 0.14), 0 2px 6px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+.tier-heading::before, .tier-heading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 28px;
+  height: 1px;
+  background: #c8102e;
+  opacity: 0.5;
+  transform: translateY(-50%);
+}
+.tier-heading::before { right: 100%; margin-right: 14px; }
+.tier-heading::after { left: 100%; margin-left: 14px; }
+@media (max-width: 640px) {
+  .tier-heading { padding: 10px 22px; border-radius: 10px; letter-spacing: 1.2px; }
+  .tier-heading::before, .tier-heading::after { width: 16px; margin-right: 8px; margin-left: 8px; }
+}
+.tier-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 36px 56px;
+}
+.tier-logos img {
+  height: 120px;
+  width: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.tier-logos img:hover { transform: translateY(-4px) scale(1.04); filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.18)); }
+.tier-single img { height: 200px; }
+.tier-diamond img { height: 210px; }
+.tier-silver img { height: 130px; }
+.tier-bronze img { height: 105px; }
+.tier-patron img { height: 110px; }
+.tier-strategic { gap: 32px 48px; flex-wrap: wrap; justify-content: center; }
+.tier-strategic img { height: 100px; max-width: 100%; object-fit: contain; }
+.row-break { flex-basis: 100%; width: 100%; height: 0; margin: 0; padding: 0; }
+@media (max-width: 640px) {
+  .row-break { display: none; }
+}
+.tier-divider {
+  max-width: 280px;
+  margin: 0 auto 56px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200, 16, 46, 0.4), transparent);
+}
+.partners-carousel { position: relative; overflow: hidden; }
+.partners-track { display: flex; width: 300%; transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1); will-change: transform; }
+.partners-track[data-pos="1"] { transform: translateX(-33.3333%); }
+.partners-track[data-pos="2"] { transform: translateX(-66.6666%); }
+.partners-slide { flex: 0 0 33.3333%; width: 33.3333%; min-width: 0; padding: 0 4px; box-sizing: border-box; }
+.partners-pager { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 48px; flex-wrap: wrap; }
+.pager-tab {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  border: 1.5px solid rgba(200, 16, 46, 0.45);
+  background: rgba(255, 255, 255, 0.6);
+  color: #8a1421;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.pager-tab:hover { border-color: #c8102e; color: #c8102e; }
+.pager-tab.active { background: #c8102e; color: #fff; border-color: #c8102e; box-shadow: 0 6px 18px rgba(200, 16, 46, 0.3); }
+.pager-arrow {
+  width: 38px; height: 38px;
+  border: 1.5px solid rgba(200, 16, 46, 0.45);
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  color: #c8102e;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+  transition: all 0.25s ease;
+}
+.pager-arrow:hover { background: #c8102e; color: #fff; border-color: #c8102e; }
+.pager-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+@media (max-width: 640px) {
+  .pager-tab { font-size: 10px; padding: 9px 18px; letter-spacing: 1px; }
+  .pager-arrow { width: 32px; height: 32px; font-size: 14px; }
+  .partners-pager { gap: 8px; }
+}
+@media (max-width: 768px) {
+  .partners-formal { padding: 64px 0; }
+  .partner-tier { margin-bottom: 48px; }
+  .tier-heading { margin-bottom: 28px; letter-spacing: 1.5px; }
+  .tier-logos { gap: 24px 32px; }
+  .tier-logos img { height: 78px; }
+  .tier-single img { height: 130px; }
+  .tier-diamond img { height: 140px; }
+  .tier-silver img { height: 85px; }
+  .tier-bronze img { height: 68px; }
+  .tier-patron img { height: 72px; }
+  .tier-strategic { flex-wrap: wrap; gap: 16px 20px; }
+  .tier-strategic img { height: 60px; }
+  .tier-divider { margin-bottom: 36px; }
+}
+
+/* ========== ORGANIZER/PARTNERS ========== */
+.partners-section {
+  text-align: center;
+}
+.partners-tier {
+  margin-bottom: 48px;
+}
+.tier-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.tier-label::before, .tier-label::after {
+  content: '';
+  width: 40px; height: 1px;
+  background: var(--cyan);
+}
+.tier-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.partner-box {
+  min-width: 180px;
+  padding: 24px 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-sharp);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-2);
+  font-size: 16px;
+  transition: all 0.25s;
+}
+.partner-box:hover {
+  color: var(--cyan);
+  border-color: var(--cyan);
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.25);
+}
+.partner-box.diamond { font-size: 20px; padding: 32px 48px; border-color: var(--cyan); color: var(--cyan); background: rgba(0, 212, 255, 0.08); box-shadow: var(--glow-cyan-sm); }
+
+/* ========== CTA SECTION ========== */
+.cta-final {
+  text-align: center;
+  padding: 120px 0;
+  position: relative;
+}
+.cta-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.15) 0%, rgba(0, 212, 255, 0.08) 100%);
+  border: 1px solid var(--cyan);
+  border-radius: var(--r-sharp);
+  padding: 64px 48px;
+  position: relative;
+  box-shadow: var(--glow-cyan-md);
+  overflow: hidden;
+}
+.cta-card::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 50%);
+  animation: rotate 20s linear infinite;
+  z-index: 0;
+}
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.cta-card > * { position: relative; z-index: 1; }
+.cta-card h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.cta-card p {
+  color: var(--text-2);
+  font-size: 17px;
+  margin-bottom: 32px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.countdown {
+  display: inline-flex;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  margin-bottom: 24px;
+  padding: 8px 20px;
+  border: 1px solid var(--cyan);
+  border-radius: var(--r-pill);
+  text-transform: uppercase;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  padding: 64px 0 32px;
+  border-top: 1px solid var(--border-soft);
+  background: rgba(4, 7, 15, 0.6);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.footer h4 {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.footer p, .footer a {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.8;
+  text-decoration: none;
+  display: block;
+}
+.footer a:hover { color: var(--cyan); }
+.footer-bottom {
+  padding-top: 24px;
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--text-3);
+}
+
+/* ========== MOBILE RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-visual { width: 100%; max-width: 400px; margin: 0 auto; }
+  .tracks-grid { grid-template-columns: 1fr; }
+  .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .nav { display: none; }
+
+  .timeline { display: block; }
+  .timeline-line { left: 32px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; background: linear-gradient(180deg, transparent, var(--cyan) 10%, var(--accent) 50%, var(--cyan) 90%, transparent); }
+  .timeline-item { display: grid; grid-template-columns: 64px 1fr; gap: 16px; grid-auto-flow: dense; align-items: start; margin-bottom: 40px; }
+  .timeline-marker { grid-column: 1; grid-row: 1; margin-bottom: 0; }
+  .timeline-content { grid-column: 2; grid-row: 1; }
+}
+@media (max-width: 640px) {
+  section { padding: 64px 0; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .benefits-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .concept-card { padding: 32px 24px; }
+  .cta-card { padding: 40px 24px; }
+  .sponsors-row { gap: 20px; }
+  .hero h1 { font-size: 40px; }
+  .brand { font-size: 15px; letter-spacing: 1px; }
+  .header .btn-primary { padding: 9px 16px !important; font-size: 11px !important; letter-spacing: 1px; }
+  .cta-card h2 { font-size: 26px; letter-spacing: 1px; }
+  .hero-tagline { font-size: 12px; letter-spacing: 2px; padding: 9px 18px; }
+  .hud-big { font-size: 52px; }
+  .hud-content { padding: 24px; }
+}
+
+/* ========== PRIZES SECTION ========== */
+.podium-grid { display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 24px; align-items: end; margin-bottom: 48px; }
+.podium-card { background: rgba(12, 26, 50, 0.6); border: 2px solid var(--border-soft); border-radius: 2px; padding: 36px 28px 28px; position: relative; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 0 18px rgba(0, 113, 227, 0.15); }
+.podium-card:hover { transform: translateY(-8px); }
+.podium-card.gold { border-color: #ffd700; background: linear-gradient(180deg, rgba(255, 215, 0, 0.12), rgba(12, 26, 50, 0.85)); box-shadow: 0 0 24px rgba(255, 215, 0, 0.4), 0 0 48px rgba(255, 215, 0, 0.18); transform: translateY(-12px); }
+.podium-card.gold:hover { transform: translateY(-20px); }
+.podium-card.silver { border-color: #c0c0c0; background: linear-gradient(180deg, rgba(192, 192, 192, 0.1), rgba(12, 26, 50, 0.85)); }
+.podium-card.bronze { border-color: #cd7f32; background: linear-gradient(180deg, rgba(205, 127, 50, 0.1), rgba(12, 26, 50, 0.85)); }
+.podium-rank-badge { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 16px; font-weight: 800; color: #04070f; border-radius: 50%; }
+.podium-card.gold .podium-rank-badge { background: #ffd700; box-shadow: 0 0 12px #ffd700; }
+.podium-card.silver .podium-rank-badge { background: #c0c0c0; box-shadow: 0 0 12px #c0c0c0; }
+.podium-card.bronze .podium-rank-badge { background: #cd7f32; box-shadow: 0 0 12px #cd7f32; }
+.podium-icon { width: 56px; height: 56px; margin-bottom: 16px; filter: drop-shadow(0 0 12px currentColor); }
+.podium-card.gold .podium-icon { color: #ffd700; }
+.podium-card.silver .podium-icon { color: #c0c0c0; }
+.podium-card.bronze .podium-icon { color: #cd7f32; }
+.podium-title { font-family: var(--font-display); font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #fff; margin-bottom: 6px; line-height: 1.3; }
+.podium-subtitle { font-family: 'Chakra Petch', monospace; font-size: 10px; letter-spacing: 1.5px; color: var(--text-3); text-transform: uppercase; margin-bottom: 16px; }
+.podium-total { font-family: 'Chakra Petch', monospace; font-size: 11px; color: var(--text-3); letter-spacing: 2px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px dashed var(--border-soft); text-transform: uppercase; }
+.podium-total strong { display: block; margin-top: 8px; font-family: var(--font-display); font-size: 34px; font-weight: 800; color: #fff; letter-spacing: 0.5px; line-height: 1.05; }
+.podium-card.gold .podium-total strong { color: #ffd700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.55); }
+.podium-card.silver .podium-total strong { color: #e8e8e8; text-shadow: 0 0 14px rgba(255, 255, 255, 0.3); }
+.podium-card.bronze .podium-total strong { color: #e09a5a; text-shadow: 0 0 14px rgba(224, 154, 90, 0.4); }
+.podium-items { display: flex; flex-direction: column; gap: 8px; }
+.podium-item { display: flex; gap: 10px; font-size: 13px; color: var(--text-2); line-height: 1.5; }
+.podium-item-icon { flex-shrink: 0; font-size: 14px; line-height: 1.5; }
+.podium-sections { display: flex; flex-direction: column; gap: 14px; }
+.podium-section-title { font-family: var(--font-display); font-size: 12px; font-weight: 800; letter-spacing: 1.5px; color: var(--cyan); margin-bottom: 8px; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
+.podium-card.gold .podium-section-title { color: #ffd700; }
+.podium-card.silver .podium-section-title { color: #d8d8d8; }
+.podium-card.bronze .podium-section-title { color: #e09a5a; }
+.podium-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.podium-list li { position: relative; padding-left: 14px; font-size: 13px; color: var(--text-2); line-height: 1.55; }
+.podium-list li::before { content: '\25B8'; position: absolute; left: 0; top: 0; color: var(--cyan); font-size: 11px; line-height: 1.55; }
+.podium-list li strong { color: #fff; font-weight: 700; }
+
+.finalists-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 48px; }
+.finalist-card { background: rgba(12, 26, 50, 0.55); border: 1px solid var(--cyan); border-radius: 2px; padding: 28px 32px; position: relative; box-shadow: 0 0 18px rgba(0, 113, 227, 0.18) inset, 0 0 16px rgba(0, 212, 255, 0.16); transition: all 0.3s; display: flex; gap: 24px; align-items: center; }
+.finalist-card:hover { transform: translateY(-4px); box-shadow: 0 0 26px rgba(0, 212, 255, 0.32), 0 0 44px rgba(0, 113, 227, 0.22), 0 18px 38px rgba(0, 0, 0, 0.6); }
+.finalist-rank-circle { flex-shrink: 0; width: 88px; height: 88px; border: 2px solid var(--cyan); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0, 212, 255, 0.08); box-shadow: 0 0 16px rgba(0, 212, 255, 0.5), 0 0 32px rgba(0, 113, 227, 0.35); }
+.finalist-rank-num { font-family: var(--font-display); font-size: 28px; font-weight: 800; color: var(--cyan); line-height: 1; }
+.finalist-rank-lbl { font-family: 'Chakra Petch', monospace; font-size: 9px; letter-spacing: 1.5px; color: var(--text-2); text-transform: uppercase; margin-top: 2px; }
+.finalist-body { flex: 1; }
+.finalist-title { font-family: var(--font-display); font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #fff; margin-bottom: 10px; }
+.finalist-value { font-family: 'Chakra Petch', monospace; font-size: 11px; color: var(--text-3); letter-spacing: 2px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed var(--border-soft); text-transform: uppercase; }
+.finalist-value strong { display: block; margin-top: 6px; font-family: var(--font-display); font-size: 24px; font-weight: 800; color: var(--cyan); letter-spacing: 0.5px; line-height: 1.1; text-shadow: 0 0 14px rgba(0, 212, 255, 0.4); }
+.finalist-cash { font-family: var(--font-body); font-size: 13px; color: var(--text-2); margin-bottom: 10px; }
+.finalist-cash strong { color: #fff; font-weight: 700; }
+.finalist-perks { display: flex; gap: 6px; flex-wrap: wrap; }
+.finalist-perk { font-family: 'Chakra Petch', monospace; font-size: 10px; padding: 3px 8px; background: rgba(0, 212, 255, 0.1); border: 1px solid var(--border-soft); color: var(--text-2); border-radius: 50px; letter-spacing: 0.5px; }
+
+.prize-subsection { margin-bottom: 40px; }
+.prize-subheader { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.prize-subheader::before, .prize-subheader::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); }
+.prize-subheader-title { font-family: var(--font-display); font-size: 14px; font-weight: 800; letter-spacing: 3px; color: var(--cyan); text-transform: uppercase; white-space: nowrap; text-shadow: 0 0 12px rgba(0, 212, 255, 0.5); }
+.mini-prize-grid { display: grid; gap: 16px; }
+.mini-prize-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.mini-prize-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.mini-prize-card { background: rgba(12, 26, 50, 0.55); border: 1px solid var(--border-soft); border-radius: 2px; padding: 20px 18px; transition: all 0.25s; box-shadow: 0 0 18px rgba(0, 113, 227, 0.15); }
+.mini-prize-card:hover { border-color: var(--cyan); transform: translateY(-3px); box-shadow: 0 0 26px rgba(0, 212, 255, 0.32); }
+.mini-prize-icon { font-size: 24px; margin-bottom: 10px; display: inline-block; }
+.mini-prize-title { font-family: var(--font-display); font-size: 13px; font-weight: 800; letter-spacing: 0.5px; color: #fff; margin-bottom: 10px; text-transform: uppercase; line-height: 1.3; min-height: 32px; }
+.mini-prize-cash { font-family: 'Chakra Petch', monospace; font-size: 10px; color: var(--text-3); letter-spacing: 1.5px; text-transform: uppercase; padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px dashed var(--border-soft); }
+.mini-prize-cash strong { display: block; margin-top: 4px; font-family: var(--font-display); font-size: 22px; font-weight: 800; color: var(--cyan); letter-spacing: 0.5px; line-height: 1.1; text-shadow: 0 0 12px rgba(0, 212, 255, 0.35); }
+.mini-prize-desc { font-size: 12px; color: var(--text-2); line-height: 1.5; }
+@media (max-width: 1024px) {
+  .podium-grid { grid-template-columns: 1fr; gap: 20px; }
+  .podium-card.gold { transform: none; order: 1; }
+  .podium-card.silver { order: 2; }
+  .podium-card.bronze { order: 3; }
+  .podium-card.gold:hover { transform: translateY(-8px); }
+  .finalists-grid { grid-template-columns: 1fr; }
+  .mini-prize-grid.cols-3, .mini-prize-grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .mini-prize-grid.cols-3, .mini-prize-grid.cols-4 { grid-template-columns: 1fr; }
+  .finalist-card { flex-direction: column; text-align: center; }
+}
+
+/* ========== SCROLL REVEAL ========== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 </head>
 <body>
 
-  <section class="hero">
-    <h1>Welcome</h1>
-    <p>A clean, simple website with one focused section to get you started.</p>
-    <a href="#">Get Started</a>
-  </section>
+<canvas id="particle-canvas"></canvas>
+<div class="bg-grid"></div>
+<div class="glow-blob b1"></div>
+<div class="glow-blob b2"></div>
+<div class="glow-blob b3"></div>
+<div class="beam b1"></div>
+<div class="beam b2"></div>
+<div class="beam b3"></div>
+<div class="scanlines"></div>
 
-  <section class="test-landing">
-    <h2>What We Offer</h2>
-    <p>Explore our core features designed to help you build faster and ship with confidence.</p>
-    <div class="cards">
-      <div class="card">
-        <h3>Fast Setup</h3>
-        <p>Get up and running in minutes with a streamlined onboarding process.</p>
+<!-- ============ HEADER ============ -->
+<header class="header">
+  <div class="container">
+    <a href="#top" class="brand"><span class="dot"></span>iNEXT LEADER 2026</a>
+    <nav>
+      <ul class="nav">
+        <li><a href="#concept">Tổng quan</a></li>
+        <li><a href="#tracks">Khối ngành</a></li>
+        <li><a href="#timeline">Hành trình</a></li>
+        <li><a href="#partners">Đối tác</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+      </ul>
+    </nav>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwSjS7aQ-JDUSXxUyJnX7k3JmxknFO4IGG58-GmmqD4390YQ/viewform" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 10px 24px; font-size: 12px;">Đăng ký ngay</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-bg-cover"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hero-eyebrow eyebrow"><span class="pulse-dot"></span>SEASON.01 // OPEN_REGISTRATION</div>
+        <h1>iNEXT<br><span class="accent">LEADER</span> 2026</h1>
+        <div class="hero-tagline">Leading The Future Of Technology</div>
+        <p class="hero-subtitle hero-typing" id="heroTyping"><span class="cursor">|</span></p>
+        <div class="hero-cta">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwSjS7aQ-JDUSXxUyJnX7k3JmxknFO4IGG58-GmmqD4390YQ/viewform" target="_blank" rel="noopener" class="btn btn-primary">Đăng ký dự thi →</a>
+          <a href="#concept" class="btn btn-ghost">Tìm hiểu thêm</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num">1000<span>+</span></div>
+            <div class="stat-label">Thí sinh dự kiến</div>
+          </div>
+          <div>
+            <div class="stat-num">70<span>+</span></div>
+            <div class="stat-label">Suất Fast-Track</div>
+          </div>
+          <div>
+            <div class="stat-num">04</div>
+            <div class="stat-label">Chặng tuyển dụng</div>
+          </div>
+          <div>
+            <div class="stat-num">20<span>+</span></div>
+            <div class="stat-label">Doanh nghiệp</div>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h3>Reliable Performance</h3>
-        <p>Built for speed and stability so you can focus on what matters.</p>
-      </div>
-      <div class="card">
-        <h3>Easy Integration</h3>
-        <p>Connect with your existing tools and workflows seamlessly.</p>
+
+      <div class="hero-visual">
+        <div class="hud-frame">
+          <div class="hud-content">
+            <div>
+              <div class="hud-label">// TỔNG GIẢI THƯỞNG</div>
+              <div class="hud-big hud-big-money">1.000.000.000<br><span class="hud-cur">VNĐ</span></div>
+              <div class="hud-label">TỔNG GIẢI THƯỞNG<br>& QUYỀN LỢI MÙA 01</div>
+            </div>
+            <div>
+              <div class="hud-line"><span>OPEN_DATE</span><span>12.05.2026</span></div>
+              <div class="hud-line"><span>FINAL_DATE</span><span>25.06.2026</span></div>
+              <div class="hud-line"><span>DURATION</span><span>45 DAYS</span></div>
+              <div class="hud-line"><span>STATUS</span><span><span class="pulse-dot"></span>LIVE</span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- ============ SPONSORS MARQUEE (logo trượt ngang) ============ -->
+<section class="sponsors-marquee-section">
+  <div class="sponsors-marquee-label">/ ĐƠN VỊ TỔ CHỨC, ĐỒNG HÀNH & ĐỐI TÁC</div>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <div class="marquee-group">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/d8/26/4a/c1/dd5c3f330a9f309d6ac381688a700f2a230682423e7fe68be034eb8e-w:300-h:150-l:17916-t:image/png.png" alt="Đối tác 1">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/ca/8f/b8/db/fa839a2087a81bc053405c288aa3d8f8e86d3451396c64a25de01f80-w:300-h:150-l:17435-t:image/png.png" alt="Đối tác 2">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/14/3d/18/ff/97783a058c0a5d5b540fe2eb0f3d34c27529d53d12b275c7b00917c4-w:300-h:150-l:34494-t:image/png.png" alt="Đối tác 4">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/15/63/41/3a/c9b561481627d2a941b3620c9ba2bca8aac6af72acbce4811bf2b9ed-w:300-h:150-l:20879-t:image/png.png" alt="Đối tác 5">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/40/88/bc/d8/d47702fb16aa4f9ef497784e28d35d5fee1fb18e44849870bc2a07a3-w:300-h:150-l:24751-t:image/png.png" alt="Đối tác 6">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/c6/00/00/59/6093cc112338caeb1cedeacbaf94a90cca684644b324cecfb33e7e23-w:300-h:150-l:12701-t:image/png.png" alt="Đối tác 7">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/1e/ae/06/78/f31bbcff019659828c52a7f0863af42b8b91422b35d69fe47d338936-w:300-h:150-l:18520-t:image/png.png" alt="Đối tác 8">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/80/64/cf/9f/5920b7b22a85861efbd6219c8a00b24198ae17eecf09c7ce78db9b4e-w:300-h:150-l:19498-t:image/png.png" alt="Đối tác 9">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/06/dc/86/fa/8eb381c76442542f9ff6d66c5eada686cd9277088d550775ca7a4447-w:300-h:150-l:47879-t:image/png.png" alt="Đối tác 10">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/a5/e1/58/39/843c0def5bf57d100d902db997bca9307ccdaae9b539b50ebfe03574-w:300-h:150-l:15388-t:image/png.png" alt="Đối tác 11">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/d0/9e/06/6c/9eb28824596d02012c3d10b74d1c7e0321e033027b59d079d49ba8e1-w:300-h:150-l:8805-t:image/png.png" alt="Đối tác 12">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/42/4c/7b/23/360e7aff1ca09e4e61c414ba22a8faab07855de8f4a1a65bed08ed79-w:300-h:150-l:10485-t:image/png.png" alt="Đối tác 13">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/c8/8a/5f/c7/dff898f85cee773c80c5f04f2faac9fe32f1c23e23395261359fbfdf-w:300-h:150-l:13624-t:image/png.png" alt="Đối tác 14">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/45/ba/dd/fb/bc1b52327fe763b5f927def0dcda1d3dd099adfdc55c036ae44f4211-w:300-h:150-l:18750-t:image/png.png" alt="Đối tác 15">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/b5/21/c3/ac/a16903f32463ea67b1bf71851f2f8b6e258c010cb2ee0c1353104ce2-w:300-h:150-l:12103-t:image/png.png" alt="Đối tác 16">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/2a/ed/39/17/4f897249308bb3894675cd92f971aa3d3b3e0e09fc083f9b2bd70801-w:300-h:150-l:17388-t:image/png.png" alt="Đối tác 17">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/e7/6d/18/b2/2283f567d20188a709e348162cdcd9575806c14ab822eb4f1ad9c0af-w:300-h:150-l:17618-t:image/png.png" alt="Đối tác 18">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/cc/44/77/83/e31bb94f5dec8de6df83a9cbce4d9a039418c6c58eefe04b4e3409e9-w:300-h:150-l:18603-t:image/png.png" alt="Đối tác 19">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/aa/6c/d8/f3/92a943ba3a8c91508578035e185b035b84780f8b25d6ebc0cee92090-w:300-h:150-l:9071-t:image/png.png" alt="Đối tác 20">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/82/ae/4c/28/3b3d4bd91d732e201eee43c2abcd547164f0558aaf0cbe5b4a779e16-w:300-h:150-l:8525-t:image/png.png" alt="Đối tác 21">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/30/a2/01/f9/c76d4618ba9bafe75a526b2b87469b4c1305629dd8ba270dd55bef59-w:300-h:150-l:14349-t:image/png.png" alt="Đối tác 22">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/92/e1/7c/8f/d31033297d8318e551a4bed0382a14028ffbe4bb7eec64e62ee9b7da-w:300-h:150-l:14364-t:image/png.png" alt="Đối tác 23">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/c2/18/38/d6/d3a32c49e3d0cfd135678b8dbb2cc8f21df2bc79f2fc8dd3054e6657-w:300-h:150-l:6806-t:image/png.png" alt="Đối tác 24">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/c7/1c/86/86/4c0464f75ffdac4c23344b0f3bd33a9e68ab3a8e4a5c7bac5f034e25-w:300-h:150-l:10260-t:image/png.png" alt="Đối tác 25">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/1a/46/c8/8e/5551d45a56f6fb625beae385e0b1e2ef8e4173fe7caf525613d58731-w:300-h:150-l:15330-t:image/png.png" alt="Đối tác 26">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/d8/3d/37/f3/155456ab8ef711224284135a1bf6e6654cbdb984127fbe7cd543b88c-w:300-h:150-l:6488-t:image/png.png" alt="Đối tác 27">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/e1/f1/32/2f/c43087ad07deecaadb1fe6f96afaa1572dd30100db3bf920d7eba5a1-w:300-h:150-l:20847-t:image/png.png" alt="Đối tác 28">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/4d/b3/1a/64/0974df94e4513c226e5d78108daf3ac13c81bc6c29ba6a02b3bbdeb5-w:300-h:150-l:24970-t:image/png.png" alt="Đối tác 29">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/43/39/f6/6f/e897b7c41e713ec5d20d51011cf6bfc55fc19dc059c5bc06324de522-w:300-h:150-l:13338-t:image/png.png" alt="Đối tác 30">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/1e/aa/22/d5/979bb7d717ce427732af133bab92959fa61a475567e7d59224c3f58c-w:300-h:150-l:10989-t:image/png.png" alt="Đối tác 31">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/1e/ea/ee/a1/b946668d2ba2bdb62d7a5faad6ecd494c60f7823d207154ba31b073e-w:300-h:150-l:15446-t:image/png.png" alt="Đối tác 32">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/62/9a/74/1c/39bd83f282a6fca92674a3a3ca391adbb61a2f7587a60c6e3f630597-w:300-h:150-l:16489-t:image/png.png" alt="Đối tác 33">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/77/41/69/fc/b319c48cb46f22613e0134b6182af678e27c83012e61f40f32bacaa7-w:300-h:150-l:14277-t:image/png.png" alt="Đối tác 34">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/d1/c7/fa/6c/ac3e554c4c926b81a560b36ebcf475f4b233327d7ae103f5710cd773-w:300-h:150-l:20445-t:image/png.png" alt="Đối tác 35">
+      </div>
+      <div class="marquee-group" aria-hidden="true">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/d8/26/4a/c1/dd5c3f330a9f309d6ac381688a700f2a230682423e7fe68be034eb8e-w:300-h:150-l:17916-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/ca/8f/b8/db/fa839a2087a81bc053405c288aa3d8f8e86d3451396c64a25de01f80-w:300-h:150-l:17435-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/14/3d/18/ff/97783a058c0a5d5b540fe2eb0f3d34c27529d53d12b275c7b00917c4-w:300-h:150-l:34494-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/15/63/41/3a/c9b561481627d2a941b3620c9ba2bca8aac6af72acbce4811bf2b9ed-w:300-h:150-l:20879-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/40/88/bc/d8/d47702fb16aa4f9ef497784e28d35d5fee1fb18e44849870bc2a07a3-w:300-h:150-l:24751-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/c6/00/00/59/6093cc112338caeb1cedeacbaf94a90cca684644b324cecfb33e7e23-w:300-h:150-l:12701-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/1e/ae/06/78/f31bbcff019659828c52a7f0863af42b8b91422b35d69fe47d338936-w:300-h:150-l:18520-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/80/64/cf/9f/5920b7b22a85861efbd6219c8a00b24198ae17eecf09c7ce78db9b4e-w:300-h:150-l:19498-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/06/dc/86/fa/8eb381c76442542f9ff6d66c5eada686cd9277088d550775ca7a4447-w:300-h:150-l:47879-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/a5/e1/58/39/843c0def5bf57d100d902db997bca9307ccdaae9b539b50ebfe03574-w:300-h:150-l:15388-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/d0/9e/06/6c/9eb28824596d02012c3d10b74d1c7e0321e033027b59d079d49ba8e1-w:300-h:150-l:8805-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/42/4c/7b/23/360e7aff1ca09e4e61c414ba22a8faab07855de8f4a1a65bed08ed79-w:300-h:150-l:10485-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/c8/8a/5f/c7/dff898f85cee773c80c5f04f2faac9fe32f1c23e23395261359fbfdf-w:300-h:150-l:13624-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/45/ba/dd/fb/bc1b52327fe763b5f927def0dcda1d3dd099adfdc55c036ae44f4211-w:300-h:150-l:18750-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/b5/21/c3/ac/a16903f32463ea67b1bf71851f2f8b6e258c010cb2ee0c1353104ce2-w:300-h:150-l:12103-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/2a/ed/39/17/4f897249308bb3894675cd92f971aa3d3b3e0e09fc083f9b2bd70801-w:300-h:150-l:17388-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/e7/6d/18/b2/2283f567d20188a709e348162cdcd9575806c14ab822eb4f1ad9c0af-w:300-h:150-l:17618-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/cc/44/77/83/e31bb94f5dec8de6df83a9cbce4d9a039418c6c58eefe04b4e3409e9-w:300-h:150-l:18603-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/aa/6c/d8/f3/92a943ba3a8c91508578035e185b035b84780f8b25d6ebc0cee92090-w:300-h:150-l:9071-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/82/ae/4c/28/3b3d4bd91d732e201eee43c2abcd547164f0558aaf0cbe5b4a779e16-w:300-h:150-l:8525-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/30/a2/01/f9/c76d4618ba9bafe75a526b2b87469b4c1305629dd8ba270dd55bef59-w:300-h:150-l:14349-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/92/e1/7c/8f/d31033297d8318e551a4bed0382a14028ffbe4bb7eec64e62ee9b7da-w:300-h:150-l:14364-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/c2/18/38/d6/d3a32c49e3d0cfd135678b8dbb2cc8f21df2bc79f2fc8dd3054e6657-w:300-h:150-l:6806-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/c7/1c/86/86/4c0464f75ffdac4c23344b0f3bd33a9e68ab3a8e4a5c7bac5f034e25-w:300-h:150-l:10260-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/1a/46/c8/8e/5551d45a56f6fb625beae385e0b1e2ef8e4173fe7caf525613d58731-w:300-h:150-l:15330-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/d8/3d/37/f3/155456ab8ef711224284135a1bf6e6654cbdb984127fbe7cd543b88c-w:300-h:150-l:6488-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/e1/f1/32/2f/c43087ad07deecaadb1fe6f96afaa1572dd30100db3bf920d7eba5a1-w:300-h:150-l:20847-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/4d/b3/1a/64/0974df94e4513c226e5d78108daf3ac13c81bc6c29ba6a02b3bbdeb5-w:300-h:150-l:24970-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/43/39/f6/6f/e897b7c41e713ec5d20d51011cf6bfc55fc19dc059c5bc06324de522-w:300-h:150-l:13338-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/1e/aa/22/d5/979bb7d717ce427732af133bab92959fa61a475567e7d59224c3f58c-w:300-h:150-l:10989-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/1e/ea/ee/a1/b946668d2ba2bdb62d7a5faad6ecd494c60f7823d207154ba31b073e-w:300-h:150-l:15446-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/62/9a/74/1c/39bd83f282a6fca92674a3a3ca391adbb61a2f7587a60c6e3f630597-w:300-h:150-l:16489-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/77/41/69/fc/b319c48cb46f22613e0134b6182af678e27c83012e61f40f32bacaa7-w:300-h:150-l:14277-t:image/png.png" alt="">
+        <img class="marquee-logo" src="https://statics.pancake.vn/web-media-262/d1/c7/fa/6c/ac3e554c4c926b81a560b36ebcf475f4b233327d7ae103f5710cd773-w:300-h:150-l:20445-t:image/png.png" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONCEPT ============ -->
+<section class="concept" id="concept">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">DESCRIPTION: iNEXT.2026</div>
+      <h2>Tổng quan chương trình</h2>
+      <div class="divider-bar">
+        <div class="line"></div>
+        <span class="arrow">◆</span>
+        <span class="arrow">◆</span>
+        <span class="arrow">◆</span>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="concept-card reveal">
+      <p class="concept-quote">
+        "Trong kỷ nguyên công nghệ, khác biệt không nằm ở việc theo kịp sự thay đổi,
+        mà ở khả năng dẫn dắt nó."
+      </p>
+      <p class="concept-body">
+        <strong style="color: var(--cyan);">iNext Leader</strong> là cuộc thi mô phỏng quy trình tuyển dụng của các tập đoàn công nghệ hàng đầu.
+      </p>
+      <p class="concept-body">
+        Thông qua các vòng thi thử thách tư duy kỹ thuật và giải quyết bài toán doanh nghiệp,
+        iNEXT LEADER mang đến hành trình giúp thí sinh phát triển <strong style="color: var(--text-1);">tư duy hệ thống</strong>,
+        <strong style="color: var(--text-1);">năng lực giải quyết vấn đề</strong> và bản lĩnh của một
+        <strong style="color: var(--cyan);">Future Tech Leader</strong>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRACKS ============ -->
+<section class="tracks" id="tracks">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">3 KHỐI NGÀNH CHÍNH</div>
+      <h2>Chọn Lĩnh vực dự thi</h2>
+      <p>Mỗi khối ngành mô phỏng một nhánh tuyển dụng thực tế từ các tập đoàn hàng đầu, chọn nhánh phù hợp với chuyên môn và định hướng nghề nghiệp của bạn.</p>
+    </div>
+
+    <div class="tracks-grid">
+      <div class="track-card reveal">
+        <div class="track-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="track-num">// TRACK_01</div>
+        <h3 class="track-title">Digital Intelligence</h3>
+        <p class="track-desc">Tập trung vào công nghệ, trí tuệ nhân tạo, dữ liệu và các nền tảng số - dành cho những sinh viên theo đuổi các lĩnh vực lập trình, AI, khoa học dữ liệu, an toàn thông tin, cloud và chuyển đổi số; hướng tới xây dựng những hệ thống thông minh và sản phẩm công nghệ trong kỷ nguyên số.</p>
+        <div class="track-roles">
+          <span class="role-tag">Software Engineer</span>
+          <span class="role-tag">AI Engineer</span>
+          <span class="role-tag">Data Analyst</span>
+          <span class="role-tag">Cloud/DevOps</span>
+          <span class="role-tag">Cybersecurity</span>
+          <span class="role-tag">System Engineer</span>
+        </div>
+      </div>
+
+      <div class="track-card reveal">
+        <div class="track-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <div class="track-num">// TRACK_02</div>
+        <h3 class="track-title">Smart Engineering</h3>
+        <p class="track-desc">Tập trung vào kỹ thuật, sản xuất và vận hành hệ thống - dành cho những sinh viên theo đuổi các lĩnh vực cơ khí, điện - điện tử, tự động hóa, vật liệu, hóa học, thực phẩm, môi trường, công nghệ công nghiệp và R&D; hướng tới xây dựng và tối ưu các hệ thống sản xuất hiện đại trong kỷ nguyên công nghệ số.</p>
+        <div class="track-roles">
+          <span class="role-tag">Production Engineer</span>
+          <span class="role-tag">Automation</span>
+          <span class="role-tag">Mechanical</span>
+          <span class="role-tag">Electrical/Electronics</span>
+          <span class="role-tag">Process Engineer</span>
+          <span class="role-tag">R&D</span>
+        </div>
+      </div>
+
+      <div class="track-card reveal">
+        <div class="track-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+        </div>
+        <div class="track-num">// TRACK_03</div>
+        <h3 class="track-title">Business Innovation</h3>
+        <p class="track-desc">Tập trung vào kinh doanh, sản phẩm và chiến lược tăng trưởng - dành cho những sinh viên quan tâm đến quản trị sản phẩm, logistics & supply chain, thương mại điện tử, phân tích kinh doanh, marketing và phát triển thị trường; hướng tới kết nối tư duy công nghệ với business để tạo ra giá trị và thúc đẩy đổi mới sáng tạo trong doanh nghiệp.</p>
+        <div class="track-roles">
+          <span class="role-tag">Product Management</span>
+          <span class="role-tag">Business Analyst</span>
+          <span class="role-tag">Supply Chain</span>
+          <span class="role-tag">E-commerce</span>
+          <span class="role-tag">Technical Sales</span>
+          <span class="role-tag">Strategy & Growth</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="timeline-section" id="timeline">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">// JOURNEY.MAP</div>
+      <h2>Hành trình 4 chặng</h2>
+      <p>Mô phỏng đầy đủ quy trình tuyển dụng của các tập đoàn lớn - từ sàng lọc CV, bài thi đánh giá năng lực đến phỏng vấn chuyên sâu với các chuyên gia và lãnh đạo của doanh nghiệp.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-line"></div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-content">
+          <div class="timeline-makecolor">// CHẶNG 01 - IGNITE</div>
+          <div class="timeline-date">12.05 - 01.06.2026</div>
+          <div class="timeline-title">CV Application & Online Assessment<em>Discover Your Potential - Khai phóng tiềm năng</em></div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Nộp CV qua form đăng ký chính thức (12.05 - 28.05)</li>
+              <li>Workshop 1: CV & Career Kickstart (22.05)</li>
+              <li>Workshop 2: Future of Technology Careers (25.05)</li>
+              <li>Workshop 3: Aptitude Test & Problem Solving (29.05)</li>
+              <li>Bài thi cá nhân Online: tư duy logic, kiến thức nền tảng & công nghệ (30.05 - 01.06)</li>
+              <li><strong style="color: var(--cyan);">→ Top 150 thí sinh xuất sắc vào chặng tiếp theo</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-marker"><div class="timeline-stage">01</div></div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-marker"><div class="timeline-stage">02</div></div>
+        <div class="timeline-content">
+          <div class="timeline-makecolor">// CHẶNG 02 - CONNECT</div>
+          <div class="timeline-date">02.06 - 10.06.2026</div>
+          <div class="timeline-title">Corporate Interview<em>Meet the Industry - Bứt phá thử thách</em></div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Training Series 1: Interview Skills, Storytelling, Personal Branding</li>
+              <li>Corporate Interview - Phỏng vấn 1:1 cùng doanh nghiệp và mentor</li>
+              <li>Talent Evaluation: Giao tiếp, Tư duy, Leadership Potential</li>
+              <li><strong style="color: var(--cyan);">→ Top 70 thí sinh nổi bật</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-content">
+          <div class="timeline-makecolor">// CHẶNG 03 - BUILD</div>
+          <div class="timeline-date">13.06 - 20.06.2026</div>
+          <div class="timeline-title">Innovation Challenge<em>Engineering the Solution - Kiến tạo giải pháp</em></div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Company Tour & Innovation Briefing - Tham quan doanh nghiệp, nhà máy, trung tâm R&D</li>
+              <li>Innovation Challenge - Xây dựng giải pháp công nghệ, kỹ thuật, business</li>
+              <li>Training Series 2: Product Mindset, System Thinking, Pitching Skills</li>
+              <li>Pitching Day - Trình bày và phản biện trước doanh nghiệp & BGK</li>
+              <li><strong style="color: var(--cyan);">→ Top 12 Finalists to Grand Arena</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-marker"><div class="timeline-stage">03</div></div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-marker"><div class="timeline-stage">04</div></div>
+        <div class="timeline-content">
+          <div class="timeline-makecolor">// CHẶNG 04 - LEAD</div>
+          <div class="timeline-date">20.06 - 25.06.2026</div>
+          <div class="timeline-title">Finals - Grand Final Night<em>Leading the Future of Technology - Dẫn đầu kỷ nguyên công nghệ</em></div>
+          <div class="timeline-desc">
+            <ul>
+              <li>iNext Networking Night - Top 70, Mentor, Doanh nghiệp, Đối tác</li>
+              <li>Final Preparation: Business Case, Strategy Debate, Leadership Spotlight</li>
+              <li>GRAND FINAL NIGHT (Top 12) - Business Case → Strategy Debate → Leadership Spotlight</li>
+              <li><strong style="color: var(--cyan);">→ Crowning the Top 3 of iNext Leader 2026</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFITS ============ -->
+<section class="benefits" id="benefits">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">// REWARDS.UNLOCKED</div>
+      <h2>Tham gia, bạn được gì?</h2>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-num">12</div>
+        <div class="benefit-title">Cơ Hội Fast Track</div>
+        <div class="benefit-desc">12 cơ hội fast track trong các chương trình tuyển dụng tài năng của các doanh nghiệp hàng đầu.</div>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-num">05</div>
+        <div class="benefit-title">Workshop Chuyên Sâu</div>
+        <div class="benefit-desc">05 workshop chuyên sâu đào tạo kiến thức, kỹ năng thực chiến gắn liền nhu cầu tuyển dụng cùng chuyên gia.</div>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-num">∞</div>
+        <div class="benefit-title">Cơ Hội Networking</div>
+        <div class="benefit-desc">∞ cơ hội networking cùng các chuyên gia, lãnh đạo từ doanh nghiệp cùng nhiều thí sinh tài năng trên toàn quốc.</div>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-num">01</div>
+        <div class="benefit-title">Hồ Sơ Chất Lượng</div>
+        <div class="benefit-desc">01 hồ sơ chất lượng với CV và các bài toán thực tế đã giải quyết, sẵn sàng cho hành trình sự nghiệp.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GIẢI THƯỞNG ============ -->
+<section id="giai-thuong" style="padding:100px 0;">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px" class="reveal">
+      <div class="eyebrow">HỆ THỐNG GIẢI THƯỞNG</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(32px,4.5vw,52px);font-weight:800;text-transform:uppercase;letter-spacing:2px;margin:16px 0;background:linear-gradient(180deg,#fff,#b8d4f5);-webkit-background-clip:text;background-clip:text;color:transparent">Tổng giải thưởng & quyền lợi</h2>
+      <div class="total-value-box" style="display:inline-block;padding:20px 36px;background:linear-gradient(135deg,rgba(255,215,0,0.12),rgba(0,212,255,0.08));border:2px solid #ffd700;border-radius:2px;box-shadow:0 0 24px rgba(255,215,0,0.35),0 0 48px rgba(255,215,0,0.18);margin-top:8px;max-width:100%">
+        <div style="font-family:var(--font-display);font-size:11px;letter-spacing:3px;color:#ffd700;text-transform:uppercase;margin-bottom:4px">/ TỔNG GIÁ TRỊ</div>
+        <div class="total-value-num" style="font-family:var(--font-display);font-size:clamp(28px,5.6vw,56px);font-weight:800;letter-spacing:1px;background:linear-gradient(180deg,#ffd700,#ffaa00);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 40px rgba(255,215,0,0.5);line-height:1;white-space:nowrap">1.000.000.000<span style="font-size:0.55em;color:var(--cyan);-webkit-text-fill-color:var(--cyan);margin-left:6px">VND</span></div>
+      </div>
+    </div>
+
+    <!-- PODIUM 3 cards -->
+    <div class="podium-grid reveal">
+      <!-- 1st Runner-up SILVER -->
+      <div class="podium-card silver">
+        <div class="podium-rank-badge">2</div>
+        <svg class="podium-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM7 10.82C5.84 10.4 5 9.3 5 8V7h2v3.82zM19 8c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg>
+        <div class="podium-title">First Runner-Up</div>
+        <div class="podium-subtitle">Á QUÂN</div>
+        <div class="podium-total">Tổng quyền lợi: <strong>~45.000.000 VNĐ</strong></div>
+        <div class="podium-sections">
+          <div>
+            <div class="podium-section-title">Tiền mặt</div>
+            <ul class="podium-list">
+              <li><strong>8.000.000 VNĐ</strong> tiền mặt</li>
+              <li>Bằng khen & quà tặng từ Ban Tổ chức</li>
+            </ul>
+          </div>
+          <div>
+            <div class="podium-section-title">Học bổng & khóa học</div>
+            <ul class="podium-list">
+              <li>Học bổng tiếng Nhật N4 Offline từ <strong>Riki Nihongo</strong> – 16.000.000 VNĐ</li>
+              <li>Học bổng khóa học <strong>Tomorrow Marketer</strong> – tối đa 7.875.000 VNĐ (75%)</li>
+              <li>Học bổng <strong>Road to Management Trainee</strong> từ The Trainee Club – 9.000.000 VNĐ</li>
+              <li>Gói hội viên <strong>Gitiho Premium</strong> 3 tháng – 597.000 VNĐ</li>
+              <li>Tài khoản tự học IELTS <strong>DOL IELTS Đình Lực</strong> – 779.000 VNĐ</li>
+            </ul>
+          </div>
+          <div>
+            <div class="podium-section-title">Voucher & quà tặng</div>
+            <ul class="podium-list">
+              <li>Merchandise & giftbox từ <strong>Coolmate</strong></li>
+              <li>Quà tặng doanh nghiệp & đối tác tài trợ hiện vật</li>
+            </ul>
+          </div>
+          <div>
+            <div class="podium-section-title">Career Opportunities</div>
+            <ul class="podium-list">
+              <li>Talent Pool ưu tiên từ <strong>HR Companion</strong> & doanh nghiệp đồng hành</li>
+              <li>Cơ hội Internship / Management Trainee</li>
+              <li>Kết nối mentor & networking với doanh nghiệp</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Champion GOLD -->
+      <div class="podium-card gold">
+        <div class="podium-rank-badge">1</div>
+        <svg class="podium-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM7 10.82C5.84 10.4 5 9.3 5 8V7h2v3.82zM19 8c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg>
+        <div class="podium-title">Champion of iNext Leader 2026</div>
+        <div class="podium-subtitle">QUÁN QUÂN MÙA 01</div>
+        <div class="podium-total">Tổng quyền lợi: <strong>~65.000.000 VNĐ</strong></div>
+        <div class="podium-sections">
+          <div>
+            <div class="podium-section-title">Tiền mặt</div>
+            <ul class="podium-list">
+              <li><strong>20.000.000 VNĐ</strong> tiền mặt</li>
+              <li>Cúp vinh danh & Bằng khen từ Ban Tổ chức</li>
+            </ul>
+          </div>
+          <div>
+            <div class="podium-section-title">Học bổng & khóa học</div>
+            <ul class="podium-list">
+              <li>Học bổng tiếng Anh tại <strong>IIG</strong> – 10.000.000 VNĐ</li>
+              <li>Học bổng tiếng Nhật N4 Offline từ <strong>Riki Nihongo</strong> – 16.000.000 VNĐ</li>
+              <li>Học bổng <strong>Road to Management Trainee</strong> từ The Trainee Club – 9.000.000 VNĐ</li>
+              <li>Học bổng khóa học bất kỳ từ <strong>Tomorrow Marketer</strong> – tối đa 10.500.000 VNĐ</li>
+              <li>Gói hội viên <strong>Gitiho Premium</strong> 3 tháng – 597.000 VNĐ</li>
+              <li>Tài khoản tự học IELTS <strong>DOL IELTS Đình Lực</strong> – 779.000 VNĐ</li>
+            </ul>
+          </div>
+          <div>
+            <div class="podium-section-title">Voucher & quà tặng</div>
+            <ul class="podium-list">
+              <li>Merchandise & giftbox từ <strong>Coolmate</strong></li>
+              <li>Quà tặng doanh nghiệp & đối tác tài trợ hiện vật</li>
+            </ul>
+          </div>
+          <div>
+            <div class="podium-section-title">Career Opportunities</div>
+            <ul class="podium-list">
+              <li><strong>Fast-track Interview</strong> tại doanh nghiệp đối tác</li>
+              <li>Talent Pool ưu tiên từ <strong>HR Companion</strong> & doanh nghiệp đồng hành</li>
+              <li>Cơ hội Internship / Management Trainee</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- 2nd Runner-up BRONZE -->
+      <div class="podium-card bronze">
+        <div class="podium-rank-badge">3</div>
+        <svg class="podium-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM7 10.82C5.84 10.4 5 9.3 5 8V7h2v3.82zM19 8c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg>
+        <div class="podium-title">Second Runner-Up</div>
+        <div class="podium-subtitle">QUÝ QUÂN</div>
+        <div class="podium-total">Tổng quyền lợi: <strong>~35.000.000 VNĐ</strong></div>
+        <div class="podium-sections">
+          <div>
+            <div class="podium-section-title">Tiền mặt</div>
+            <ul class="podium-list">
+              <li><strong>3.000.000 VNĐ</strong> tiền mặt</li>
+              <li>Bằng khen & quà tặng từ Ban Tổ chức</li>
+            </ul>
+          </div>
+          <div>
+            <div class="podium-section-title">Học bổng & khóa học</div>
+            <ul class="podium-list">
+              <li>Học bổng tiếng Nhật N4 Offline từ <strong>Riki Nihongo</strong> – 16.000.000 VNĐ</li>
+              <li>Học bổng khóa học <strong>Tomorrow Marketer</strong> – tối đa 5.250.000 VNĐ (50%)</li>
+              <li>Học bổng <strong>Road to Management Trainee</strong> từ The Trainee Club – 9.000.000 VNĐ</li>
+              <li>Gói hội viên <strong>Gitiho Premium</strong> 3 tháng – 597.000 VNĐ</li>
+              <li>Tài khoản tự học IELTS <strong>DOL IELTS Đình Lực</strong> – 779.000 VNĐ</li>
+            </ul>
+          </div>
+          <div>
+            <div class="podium-section-title">Voucher & quà tặng</div>
+            <ul class="podium-list">
+              <li>Merchandise & giftbox từ <strong>Coolmate</strong></li>
+              <li>Quà tặng doanh nghiệp & đối tác tài trợ hiện vật</li>
+            </ul>
+          </div>
+          <div>
+            <div class="podium-section-title">Career Opportunities</div>
+            <ul class="podium-list">
+              <li>Talent Pool ưu tiên từ <strong>HR Companion</strong> & doanh nghiệp đồng hành</li>
+              <li>Kết nối mentor & doanh nghiệp</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOP 6 + TOP 12 -->
+    <div class="finalists-grid reveal">
+      <div class="finalist-card">
+        <div class="finalist-rank-circle"><div class="finalist-rank-num">6</div><div class="finalist-rank-lbl">TOP</div></div>
+        <div class="finalist-body">
+          <div class="finalist-title">Top 6 Finalists Award</div>
+          <div class="finalist-value">Tổng quyền lợi / thí sinh<strong>~20.000.000 VNĐ</strong></div>
+          <div class="finalist-cash">Tiền mặt:<strong>1.000.000 VNĐ</strong> / thí sinh</div>
+          <div class="finalist-perks">
+            <span class="finalist-perk">N5 Riki · 8M</span><span class="finalist-perk">TTC 30%</span><span class="finalist-perk">Tomorrow Marketer 20%</span><span class="finalist-perk">Gitiho Premium</span><span class="finalist-perk">DOL IELTS</span><span class="finalist-perk">Giftbox</span>
+          </div>
+        </div>
+      </div>
+      <div class="finalist-card">
+        <div class="finalist-rank-circle"><div class="finalist-rank-num">12</div><div class="finalist-rank-lbl">TOP</div></div>
+        <div class="finalist-body">
+          <div class="finalist-title">Top 12 Finalists Award</div>
+          <div class="finalist-value">Tổng quyền lợi / thí sinh<strong>~15.000.000 VNĐ</strong></div>
+          <div class="finalist-cash">Tiền mặt:<strong>500.000 VNĐ</strong> / thí sinh</div>
+          <div class="finalist-perks">
+            <span class="finalist-perk">N5 Riki · 8M</span><span class="finalist-perk">TTC 30%</span><span class="finalist-perk">Tomorrow Marketer 20%</span><span class="finalist-perk">Gitiho Premium</span><span class="finalist-perk">DOL IELTS</span><span class="finalist-perk">Mentor Network</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRACK AWARDS -->
+    <div class="prize-subsection reveal">
+      <div class="prize-subheader"><div class="prize-subheader-title">TRACK AWARDS / 3 KHỐI NGÀNH</div></div>
+      <div class="mini-prize-grid cols-3">
+        <div class="mini-prize-card"><div class="mini-prize-title">Outstanding Digital Intelligence Talent</div><div class="mini-prize-cash">Giá trị giải<strong>2.000.000 VNĐ</strong></div><div class="mini-prize-desc">Tiền mặt + học bổng công nghệ & nền tảng học tập + giấy chứng nhận chuyên đề.</div></div>
+        <div class="mini-prize-card"><div class="mini-prize-title">Outstanding Smart Engineering Talent</div><div class="mini-prize-cash">Giá trị giải<strong>2.000.000 VNĐ</strong></div><div class="mini-prize-desc">Tiền mặt + học bổng kỹ thuật & kỹ năng chuyên môn + giấy chứng nhận chuyên đề.</div></div>
+        <div class="mini-prize-card"><div class="mini-prize-title">Outstanding Business Innovation Talent</div><div class="mini-prize-cash">Giá trị giải<strong>2.000.000 VNĐ</strong></div><div class="mini-prize-desc">Tiền mặt + học bổng Business / Marketing / Product + giấy chứng nhận chuyên đề.</div></div>
+      </div>
+    </div>
+
+    <!-- SPECIAL AWARDS -->
+    <div class="prize-subsection reveal">
+      <div class="prize-subheader"><div class="prize-subheader-title">SPECIAL AWARDS / GIẢI ĐẶC BIỆT</div></div>
+      <div class="mini-prize-grid cols-3">
+        <div class="mini-prize-card"><div class="mini-prize-title">Best Online Assessment</div><div class="mini-prize-cash">Giá trị giải<strong>1.000.000 VNĐ</strong></div><div class="mini-prize-desc">Quà tặng & giấy chứng nhận cho thí sinh có kết quả bài Online Test xuất sắc nhất.</div></div>
+        <div class="mini-prize-card"><div class="mini-prize-title">Most Favorite Candidate</div><div class="mini-prize-cash">Giá trị giải<strong>2.000.000 VNĐ</strong></div><div class="mini-prize-desc">Thí sinh được yêu thích nhất qua bình chọn cộng đồng + quà tặng truyền thông.</div></div>
+        <div class="mini-prize-card"><div class="mini-prize-title">Enterprise Choice (02 GIẢI)</div><div class="mini-prize-cash">Mỗi giải<strong>2.000.000 VNĐ</strong></div><div class="mini-prize-desc">Fast-track Interview + Internship Opportunities từ doanh nghiệp đối tác.</div></div>
+      </div>
+    </div>
+
+    <!-- TEAM & COMMUNITY -->
+    <div class="prize-subsection reveal">
+      <div class="prize-subheader"><div class="prize-subheader-title">TEAM & COMMUNITY AWARDS</div></div>
+      <div class="mini-prize-grid cols-4">
+        <div class="mini-prize-card"><div class="mini-prize-title">Best Innovation Challenge Team</div><div class="mini-prize-cash">Giá trị giải<strong>3.000.000 VNĐ</strong></div><div class="mini-prize-desc">Đội thi giải Innovation Challenge xuất sắc nhất.</div></div>
+        <div class="mini-prize-card"><div class="mini-prize-title">Most Active University</div><div class="mini-prize-cash">Giá trị giải<strong>5.000.000 VNĐ</strong></div><div class="mini-prize-desc">Kỷ niệm chương cho trường có nhiều thí sinh tham gia nhất.</div></div>
+        <div class="mini-prize-card"><div class="mini-prize-title">Outstanding Student Community</div><div class="mini-prize-cash">Giá trị giải<strong>1.000.000 VNĐ</strong></div><div class="mini-prize-desc">CLB/Cộng đồng sinh viên tích cực đồng hành cùng cuộc thi.</div></div>
+        <div class="mini-prize-card"><div class="mini-prize-title">Media Ambassador</div><div class="mini-prize-cash">Mỗi giải<strong>500.000 VNĐ</strong></div><div class="mini-prize-desc">Thí sinh lan tỏa hình ảnh cuộc thi tốt nhất.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="cta-final" id="register">
+  <div class="container">
+    <div class="cta-card reveal">
+      <div class="countdown"><span class="pulse-dot"></span>HẠN ĐĂNG KÝ: 28.05.2026</div>
+      <h2>Sẵn sàng dẫn đầu<br>kỷ nguyên công nghệ?</h2>
+      <p>Mùa đầu tiên của iNEXT LEADER đã chính thức khởi động. Đăng ký ngay để bắt đầu hành trình bứt phá giới hạn bản thân.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwSjS7aQ-JDUSXxUyJnX7k3JmxknFO4IGG58-GmmqD4390YQ/viewform" class="btn btn-primary" target="_blank" rel="noopener">Đăng ký dự thi ngay →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARTNERS FORMAL ============ -->
+<section class="partners-formal" id="partners">
+  <div class="container">
+    <div class="partners-carousel">
+      <div class="partners-track" data-pos="0" id="partnersTrack">
+
+        <!-- SLIDE 1: ĐỐI TÁC & ĐƠN VỊ TỔ CHỨC -->
+        <div class="partners-slide">
+          <div class="partner-tier reveal">
+            <h3 class="tier-heading">Đơn vị tổ chức</h3>
+            <div class="tier-logos tier-single">
+              <img src="https://statics.pancake.vn/web-media-262/d8/26/4a/c1/dd5c3f330a9f309d6ac381688a700f2a230682423e7fe68be034eb8e-w:300-h:150-l:17916-t:image/png.png" alt="Đơn vị tổ chức">
+            </div>
+          </div>
+
+          <div class="partner-tier reveal">
+            <h3 class="tier-heading">Đơn vị đồng tổ chức và bảo trợ truyền thông</h3>
+            <div class="tier-logos">
+              <img src="https://statics.pancake.vn/web-media-262/15/63/41/3a/c9b561481627d2a941b3620c9ba2bca8aac6af72acbce4811bf2b9ed-w:300-h:150-l:20879-t:image/png.png" alt="Đối tác đồng tổ chức 1">
+              <img src="https://statics.pancake.vn/web-media-262/80/64/cf/9f/5920b7b22a85861efbd6219c8a00b24198ae17eecf09c7ce78db9b4e-w:300-h:150-l:19498-t:image/png.png" alt="Đối tác đồng tổ chức 2">
+              <img src="https://statics.pancake.vn/web-media-262/ca/8f/b8/db/fa839a2087a81bc053405c288aa3d8f8e86d3451396c64a25de01f80-w:300-h:150-l:17435-t:image/png.png" alt="Đối tác đồng tổ chức 4">
+              <img src="https://statics.pancake.vn/web-media-262/06/dc/86/fa/8eb381c76442542f9ff6d66c5eada686cd9277088d550775ca7a4447-w:300-h:150-l:47879-t:image/png.png" alt="Đối tác đồng tổ chức 5">
+            </div>
+          </div>
+
+          <div class="partner-tier reveal">
+            <h3 class="tier-heading">Đối tác chiến lược</h3>
+            <div class="tier-logos tier-strategic">
+              <img src="https://statics.pancake.vn/web-media-262/14/3d/18/ff/97783a058c0a5d5b540fe2eb0f3d34c27529d53d12b275c7b00917c4-w:300-h:150-l:34494-t:image/png.png" alt="Đối tác chiến lược 1">
+              <img src="https://statics.pancake.vn/web-media-262/c6/00/00/59/6093cc112338caeb1cedeacbaf94a90cca684644b324cecfb33e7e23-w:300-h:150-l:12701-t:image/png.png" alt="Đối tác chiến lược 2">
+              <img src="https://statics.pancake.vn/web-media-262/40/88/bc/d8/d47702fb16aa4f9ef497784e28d35d5fee1fb18e44849870bc2a07a3-w:300-h:150-l:24751-t:image/png.png" alt="Đối tác chiến lược 3">
+              <div class="row-break"></div>
+              <img src="https://statics.pancake.vn/web-media-262/42/4c/7b/23/360e7aff1ca09e4e61c414ba22a8faab07855de8f4a1a65bed08ed79-w:300-h:150-l:10485-t:image/png.png" alt="Đối tác chiến lược 4">
+              <img src="https://statics.pancake.vn/web-media-262/a5/e1/58/39/843c0def5bf57d100d902db997bca9307ccdaae9b539b50ebfe03574-w:300-h:150-l:15388-t:image/png.png" alt="Đối tác chiến lược 5">
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2: NHÀ TÀI TRỢ -->
+        <div class="partners-slide">
+          <div class="partner-tier reveal">
+            <h3 class="tier-heading">Nhà tài trợ Kim cương</h3>
+            <div class="tier-logos tier-diamond">
+              <img src="https://statics.pancake.vn/web-media-262/4d/b3/1a/64/0974df94e4513c226e5d78108daf3ac13c81bc6c29ba6a02b3bbdeb5-w:300-h:150-l:24970-t:image/png.png" alt="Nhà tài trợ Kim cương 1">
+              <img src="https://statics.pancake.vn/web-media-262/1a/46/c8/8e/5551d45a56f6fb625beae385e0b1e2ef8e4173fe7caf525613d58731-w:300-h:150-l:15330-t:image/png.png" alt="Nhà tài trợ Kim cương 2">
+            </div>
+          </div>
+
+          <div class="partner-tier reveal">
+            <h3 class="tier-heading">Nhà tài trợ Bạc</h3>
+            <div class="tier-logos tier-silver">
+              <img src="https://statics.pancake.vn/web-media-262/e1/f1/32/2f/c43087ad07deecaadb1fe6f96afaa1572dd30100db3bf920d7eba5a1-w:300-h:150-l:20847-t:image/png.png" alt="Nhà tài trợ Bạc 1" style="height: 100px;">
+              <img src="https://statics.pancake.vn/web-media-262/d8/3d/37/f3/155456ab8ef711224284135a1bf6e6654cbdb984127fbe7cd543b88c-w:300-h:150-l:6488-t:image/png.png" alt="Nhà tài trợ Bạc 2" style="height: 160px;">
+            </div>
+          </div>
+
+          <div class="partner-tier reveal">
+            <h3 class="tier-heading">Nhà tài trợ Đồng</h3>
+            <div class="tier-logos tier-bronze">
+              <img src="https://statics.pancake.vn/web-media-262/62/9a/74/1c/39bd83f282a6fca92674a3a3ca391adbb61a2f7587a60c6e3f630597-w:300-h:150-l:16489-t:image/png.png" alt="Nhà tài trợ Đồng 1">
+              <img src="https://statics.pancake.vn/web-media-262/77/41/69/fc/b319c48cb46f22613e0134b6182af678e27c83012e61f40f32bacaa7-w:300-h:150-l:14277-t:image/png.png" alt="Nhà tài trợ Đồng 2">
+              <img src="https://statics.pancake.vn/web-media-262/d1/c7/fa/6c/ac3e554c4c926b81a560b36ebcf475f4b233327d7ae103f5710cd773-w:300-h:150-l:20445-t:image/png.png" alt="Nhà tài trợ Đồng 3">
+              <img src="https://statics.pancake.vn/web-media-262/1e/ea/ee/a1/b946668d2ba2bdb62d7a5faad6ecd494c60f7823d207154ba31b073e-w:300-h:150-l:15446-t:image/png.png" alt="Nhà tài trợ Đồng 4">
+            </div>
+          </div>
+
+          <div class="partner-tier reveal">
+            <h3 class="tier-heading">Đơn vị bảo trợ</h3>
+            <div class="tier-logos tier-patron">
+              <img src="https://statics.pancake.vn/web-media-262/43/39/f6/6f/e897b7c41e713ec5d20d51011cf6bfc55fc19dc059c5bc06324de522-w:300-h:150-l:13338-t:image/png.png" alt="Đơn vị bảo trợ">
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3: ĐỒNG HÀNH & ĐỐI TÁC CHUYÊN MÔN / TRUYỀN THÔNG -->
+        <div class="partners-slide">
+          <div class="partner-tier reveal">
+            <h3 class="tier-heading">Nhà tài trợ đồng hành</h3>
+            <div class="tier-logos tier-silver">
+              <img src="https://statics.pancake.vn/web-media-262/92/e1/7c/8f/d31033297d8318e551a4bed0382a14028ffbe4bb7eec64e62ee9b7da-w:300-h:150-l:14364-t:image/png.png" alt="Nhà tài trợ đồng hành 1">
+              <img src="https://statics.pancake.vn/web-media-262/c7/1c/86/86/4c0464f75ffdac4c23344b0f3bd33a9e68ab3a8e4a5c7bac5f034e25-w:300-h:150-l:10260-t:image/png.png" alt="Nhà tài trợ đồng hành 2">
+              <img src="https://statics.pancake.vn/web-media-262/c2/18/38/d6/d3a32c49e3d0cfd135678b8dbb2cc8f21df2bc79f2fc8dd3054e6657-w:300-h:150-l:6806-t:image/png.png" alt="Nhà tài trợ đồng hành 3">
+              <img src="https://statics.pancake.vn/web-media-262/82/ae/4c/28/3b3d4bd91d732e201eee43c2abcd547164f0558aaf0cbe5b4a779e16-w:300-h:150-l:8525-t:image/png.png" alt="Nhà tài trợ đồng hành 4">
+              <img src="https://statics.pancake.vn/web-media-262/b5/21/c3/ac/a16903f32463ea67b1bf71851f2f8b6e258c010cb2ee0c1353104ce2-w:300-h:150-l:12103-t:image/png.png" alt="Nhà tài trợ đồng hành 5">
+            </div>
+          </div>
+
+          <div class="partner-tier reveal">
+            <h3 class="tier-heading">Đối tác chuyên môn</h3>
+            <div class="tier-logos tier-bronze">
+              <img src="https://statics.pancake.vn/web-media-262/4d/b3/1a/64/0974df94e4513c226e5d78108daf3ac13c81bc6c29ba6a02b3bbdeb5-w:300-h:150-l:24970-t:image/png.png" alt="Đối tác chuyên môn 1">
+              <img src="https://statics.pancake.vn/web-media-262/1a/46/c8/8e/5551d45a56f6fb625beae385e0b1e2ef8e4173fe7caf525613d58731-w:300-h:150-l:15330-t:image/png.png" alt="Đối tác chuyên môn 2">
+              <img src="https://statics.pancake.vn/web-media-262/e1/f1/32/2f/c43087ad07deecaadb1fe6f96afaa1572dd30100db3bf920d7eba5a1-w:300-h:150-l:20847-t:image/png.png" alt="Đối tác chuyên môn 3">
+              <img src="https://statics.pancake.vn/web-media-262/45/ba/dd/fb/bc1b52327fe763b5f927def0dcda1d3dd099adfdc55c036ae44f4211-w:300-h:150-l:18750-t:image/png.png" alt="Đối tác chuyên môn 4">
+              <img src="https://statics.pancake.vn/web-media-262/92/e1/7c/8f/d31033297d8318e551a4bed0382a14028ffbe4bb7eec64e62ee9b7da-w:300-h:150-l:14364-t:image/png.png" alt="Đối tác chuyên môn 5">
+              <img src="https://statics.pancake.vn/web-media-262/c6/00/00/59/6093cc112338caeb1cedeacbaf94a90cca684644b324cecfb33e7e23-w:300-h:150-l:12701-t:image/png.png" alt="Đối tác chuyên môn 6">
+              <img src="https://statics.pancake.vn/web-media-262/40/88/bc/d8/d47702fb16aa4f9ef497784e28d35d5fee1fb18e44849870bc2a07a3-w:300-h:150-l:24751-t:image/png.png" alt="Đối tác chuyên môn 7">
+              <img src="https://statics.pancake.vn/web-media-262/42/4c/7b/23/360e7aff1ca09e4e61c414ba22a8faab07855de8f4a1a65bed08ed79-w:300-h:150-l:10485-t:image/png.png" alt="Đối tác chuyên môn 8">
+              <img src="https://statics.pancake.vn/web-media-262/a5/e1/58/39/843c0def5bf57d100d902db997bca9307ccdaae9b539b50ebfe03574-w:300-h:150-l:15388-t:image/png.png" alt="Đối tác chuyên môn 9">
+              <img src="https://statics.pancake.vn/web-media-262/c8/8a/5f/c7/dff898f85cee773c80c5f04f2faac9fe32f1c23e23395261359fbfdf-w:300-h:150-l:13624-t:image/png.png" alt="Đối tác chuyên môn 10">
+            </div>
+          </div>
+
+          <div class="partner-tier reveal">
+            <h3 class="tier-heading">Đối tác truyền thông</h3>
+            <div class="tier-logos tier-bronze">
+              <img src="https://statics.pancake.vn/web-media-262/e7/6d/18/b2/2283f567d20188a709e348162cdcd9575806c14ab822eb4f1ad9c0af-w:300-h:150-l:17618-t:image/png.png" alt="Đối tác truyền thông 1">
+              <img src="https://statics.pancake.vn/web-media-262/99/57/1e/c6/36c02854b4aa28fbedbf287b0b938d23ee232b3c05aba03c73c8e2aa-w:300-h:150-l:12103-t:image/png.png" alt="Đối tác truyền thông 2">
+              <img src="https://statics.pancake.vn/web-media-262/23/91/95/f2/a1f27436bdbcdec634db9633585465e146af9289ca308ec90d51a191-w:300-h:150-l:11084-t:image/png.png" alt="Đối tác truyền thông 3">
+              <img src="https://statics.pancake.vn/web-media-262/30/a2/01/f9/c76d4618ba9bafe75a526b2b87469b4c1305629dd8ba270dd55bef59-w:300-h:150-l:14349-t:image/png.png" alt="Đối tác truyền thông 4">
+              <img src="https://statics.pancake.vn/web-media-262/d0/9e/06/6c/9eb28824596d02012c3d10b74d1c7e0321e033027b59d079d49ba8e1-w:300-h:150-l:8805-t:image/png.png" alt="Đối tác truyền thông 5">
+              <img src="https://statics.pancake.vn/web-media-262/aa/6c/d8/f3/92a943ba3a8c91508578035e185b035b84780f8b25d6ebc0cee92090-w:300-h:150-l:9071-t:image/png.png" alt="Đối tác truyền thông 6">
+              <img src="https://statics.pancake.vn/web-media-262/cc/44/77/83/e31bb94f5dec8de6df83a9cbce4d9a039418c6c58eefe04b4e3409e9-w:300-h:150-l:18603-t:image/png.png" alt="Đối tác truyền thông 7">
+              <img src="https://statics.pancake.vn/web-media-262/2a/ed/39/17/4f897249308bb3894675cd92f971aa3d3b3e0e09fc083f9b2bd70801-w:300-h:150-l:17388-t:image/png.png" alt="Đối tác truyền thông 8">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="partners-pager">
+        <button class="pager-arrow" id="partnersPrev" aria-label="Trước">‹</button>
+        <button class="pager-tab active" data-slide="0">Đối tác & Tổ chức</button>
+        <button class="pager-tab" data-slide="1">Nhà tài trợ</button>
+        <button class="pager-tab" data-slide="2">Đồng hành & Chuyên môn</button>
+        <button class="pager-arrow" id="partnersNext" aria-label="Sau">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <!-- CTA join community -->
+    <div style="background:linear-gradient(135deg,rgba(0,113,227,0.18) 0%,rgba(0,212,255,0.08) 100%);border:1px solid var(--cyan);border-radius:2px;padding:36px 40px;margin-bottom:48px;box-shadow:0 0 22px rgba(0,212,255,0.5);position:relative;overflow:hidden">
+      <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:32px;align-items:center" class="footer-cta-row">
+        <div>
+          <div style="font-family:var(--font-display);font-size:11px;letter-spacing:2px;color:var(--cyan);margin-bottom:8px;text-transform:uppercase">/ THEO DÕI THÔNG TIN CHÍNH THỨC</div>
+          <div style="font-family:var(--font-display);font-size:24px;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:0.5px">Gia nhập cộng đồng iNext Leader 2026</div>
+          <p style="font-size:14px;color:var(--text-2);line-height:1.6">Theo dõi Fanpage và tham gia Group cộng đồng để cập nhật thông tin mới nhất của cuộc thi.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="https://www.facebook.com/iNextLeader" target="_blank" rel="noopener" class="btn btn-primary" style="justify-content:center;padding:12px 24px;font-size:13px">📘 Fanpage iNext Leader</a>
+          <a href="https://www.facebook.com/groups/gentechit" target="_blank" rel="noopener" class="btn btn-ghost" style="justify-content:center;padding:12px 24px;font-size:13px">👥 Group GenTech</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 cụm -->
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom: 16px;"><span class="dot"></span>iNEXT LEADER 2026</div>
+        <p style="font-size: 14px; line-height: 1.7;">
+          Cuộc thi mô phỏng quy trình tuyển dụng dành cho sinh viên Công nghệ - Kỹ thuật - Kinh tế số,
+          giúp thí sinh trải nghiệm môi trường doanh nghiệp thực tế và phát triển tư duy của một
+          <strong style="color:var(--cyan)">Future Tech Leader</strong>.
+        </p>
+        <p style="font-size: 12px; line-height: 1.6; color: var(--text-3); margin-top: 12px;">
+          Tổ chức bởi <strong style="color:var(--text-2)">iConneX</strong> - Hệ sinh thái kết nối nhân tài & thương hiệu tuyển dụng.
+        </p>
+      </div>
+      <div>
+        <h4>Liên hệ</h4>
+        <p><strong style="color:#fff">Đào Việt Bách</strong><br><span style="color:var(--text-3);font-size:12px">Trưởng Ban Tổ chức</span></p>
+        <a href="tel:0969125248">📞 0969 125 248</a>
+        <a href="mailto:bachdv@iconnex.vn">✉ bachdv@iconnex.vn</a>
+      </div>
+      <div>
+        <h4>Thông tin</h4>
+        <a href="#register">→ Đăng ký dự thi</a>
+        <a href="#concept">→ Thông tin cuộc thi</a>
+        <a href="https://www.facebook.com/iNextLeader" target="_blank" rel="noopener">→ Fanpage iNext Leader</a>
+        <a href="https://www.facebook.com/groups/gentechit" target="_blank" rel="noopener">→ Cộng đồng GenTech</a>
+      </div>
+      <div>
+        <h4>Định vị</h4>
+        <p style="font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:1.5px;color:var(--cyan);text-transform:uppercase;margin-bottom:6px;text-shadow:0 0 8px rgba(0,212,255,0.3)">LEADING THE FUTURE OF TECHNOLOGY</p>
+        <p style="font-family:'Chakra Petch',monospace;font-size:11px;color:var(--text-3);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">Connect Talent · Build Futures</p>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-family:'Chakra Petch',monospace;font-size:11px;color:var(--text-2);padding:4px 10px;background:rgba(0,212,255,0.08);border:1px solid var(--border-soft);border-radius:50px;text-align:center;letter-spacing:1px">Digital Intelligence</span>
+          <span style="font-family:'Chakra Petch',monospace;font-size:11px;color:var(--text-2);padding:4px 10px;background:rgba(0,212,255,0.08);border:1px solid var(--border-soft);border-radius:50px;text-align:center;letter-spacing:1px">Smart Engineering</span>
+          <span style="font-family:'Chakra Petch',monospace;font-size:11px;color:var(--text-2);padding:4px 10px;background:rgba(0,212,255,0.08);border:1px solid var(--border-soft);border-radius:50px;text-align:center;letter-spacing:1px">Business Innovation</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 iNEXT LEADER · Powered by iConneX</div>
+      <div style="color: var(--cyan);">[SEASON.01 / SYS.LIVE]</div>
+    </div>
+  </div>
+</footer>
+<style>
+@media (max-width: 1024px) {
+  .footer-cta-row { grid-template-columns: 1fr !important; gap: 24px !important; }
+}
+</style>
+
+<script>
+/* ============ PARTICLE NETWORK BACKGROUND (cursor follow) ============ */
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  // Skip heavy canvas animation on mobile/touch devices
+  const isMobile = window.matchMedia('(max-width: 768px)').matches || ('ontouchstart' in window && window.innerWidth < 900);
+  if (isMobile) { canvas.style.display = 'none'; return; }
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  const mouse = { x: -1000, y: -1000 };
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    initParticles();
+  }
+  function initParticles() {
+    particles = [];
+    const count = Math.floor((W * H) / 16000);
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 1.5 + 0.5
+      });
+    }
+  }
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0, 212, 255, 0.55)';
+      ctx.fill();
+    }
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 130) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(0, 113, 227, ${0.18 * (1 - d/130)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+      const mdx = particles[i].x - mouse.x;
+      const mdy = particles[i].y - mouse.y;
+      const md = Math.sqrt(mdx*mdx + mdy*mdy);
+      if (md < 160) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.strokeStyle = `rgba(0, 212, 255, ${0.55 * (1 - md/160)})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('mouseleave', () => { mouse.x = -1000; mouse.y = -1000; });
+  resize(); draw();
+})();
+
+// HERO TYPING - tóm tắt ý nghĩa & nội dung chương trình
+(function(){
+  const el = document.getElementById('heroTyping');
+  if (!el) return;
+  const cursor = '<span class="cursor">|</span>';
+  const lines = [
+    'Cuộc thi mô phỏng quy trình tuyển dụng của các tập đoàn công nghệ hàng đầu',
+    'Dành cho sinh viên Công nghệ - Kỹ thuật - Kinh tế số',
+    'Đồng hành cùng 20+ doanh nghiệp & 1 tỷ đồng giải thưởng',
+    'Top 70 nhận Priority Interview & Fast-Track Recruitment'
+  ];
+  let lineIdx = 0, charIdx = 0, fullHtml = '';
+  function type(){
+    if (lineIdx >= lines.length) { el.innerHTML = fullHtml + cursor; return; }
+    const line = lines[lineIdx];
+    if (charIdx <= line.length) {
+      el.innerHTML = fullHtml + '<span class="line">' + line.substring(0, charIdx) + '</span>' + cursor;
+      charIdx++;
+      setTimeout(type, 25);
+    } else {
+      fullHtml += '<span class="line">' + line + '</span>';
+      lineIdx++;
+      charIdx = 0;
+      setTimeout(type, 350);
+    }
+  }
+  setTimeout(type, 600);
+})();
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Partners carousel (swipe between Đối tác & Nhà tài trợ)
+(function(){
+  const track = document.getElementById('partnersTrack');
+  if (!track) return;
+  const carousel = track.closest('.partners-carousel');
+  const tabs = document.querySelectorAll('.pager-tab');
+  const prev = document.getElementById('partnersPrev');
+  const next = document.getElementById('partnersNext');
+  const slides = track.querySelectorAll('.partners-slide');
+  const total = slides.length;
+  const AUTO_MS = 2000;
+  let pos = 0;
+  let timer = null;
+  let paused = false;
+  function update(newPos){
+    pos = ((newPos % total) + total) % total; // wrap
+    track.dataset.pos = pos;
+    tabs.forEach(t => t.classList.toggle('active', Number(t.dataset.slide) === pos));
+  }
+  function startAuto(){
+    stopAuto();
+    if (paused) return;
+    timer = setInterval(() => update(pos + 1), AUTO_MS);
+  }
+  function stopAuto(){ if (timer) { clearInterval(timer); timer = null; } }
+  function restart(){ startAuto(); }
+  tabs.forEach(t => t.addEventListener('click', () => { update(Number(t.dataset.slide)); restart(); }));
+  if (prev) prev.addEventListener('click', () => { update(pos - 1); restart(); });
+  if (next) next.addEventListener('click', () => { update(pos + 1); restart(); });
+  // pause on hover (desktop)
+  if (carousel) {
+    carousel.addEventListener('mouseenter', () => { paused = true; stopAuto(); });
+    carousel.addEventListener('mouseleave', () => { paused = false; startAuto(); });
+  }
+  // pause when tab not visible
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAuto(); else startAuto();
+  });
+  // touch swipe
+  let touchStartX = null;
+  track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; stopAuto(); }, {passive: true});
+  track.addEventListener('touchend', e => {
+    if (touchStartX === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) update(dx < 0 ? pos + 1 : pos - 1);
+    touchStartX = null;
+    restart();
+  });
+  update(0);
+  startAuto();
+})();
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
 
 </body>
 </html>
