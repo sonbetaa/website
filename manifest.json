@@ -1,0 +1,20 @@
+{
+  "name": "Tính Giá Thuê Xe",
+  "short_name": "Thuê xe",
+  "description": "Tính giá thuê xe VinFast VF3 và theo dõi doanh thu",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#667eea",
+  "theme_color": "#4f46e5",
+  "lang": "vi",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
